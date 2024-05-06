@@ -1,0 +1,24 @@
+// Octokit.js
+// https://github.com/octokit/core.js#readme
+
+
+
+  async function getRepo(owner, repo) {
+    const { Octokit } = await import("@octokit/core");
+  
+    const octokit = new Octokit({
+      auth: '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'
+    });
+  
+    const response = await octokit.request('GET /repos/{owner}/{repo}', {
+      owner: owner,
+      repo: repo,
+      headers: {
+        'X-GitHub-Api-Version': '2022-11-28'
+      }
+    });
+  
+    return response;
+}
+
+module.exports = getRepo;
